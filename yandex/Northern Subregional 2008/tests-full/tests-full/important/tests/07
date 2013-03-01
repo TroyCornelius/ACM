@@ -1,0 +1,4 @@
+3
+D   := a |   ~a
+Z :=   b    & ~b
+R   := a | b|c |d| e| f| i|j | k

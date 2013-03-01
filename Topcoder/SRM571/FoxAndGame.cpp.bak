@@ -1,0 +1,15 @@
+import java.util.*;
+public class FoxAndGame {
+	public int countStars(String[] result) {
+		
+	}
+	public static void main(String[] args) {
+		FoxAndGame temp = new FoxAndGame();
+		System.out.println(temp.countStars(String[] result));
+	}
+}
+
+
+// Powered by FileEdit
+// Powered by TZTester 1.01 [25-Feb-2003]
+// Powered by CodeProcessor

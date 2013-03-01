@@ -1,0 +1,80 @@
+/*
+ * Author:  Troy
+ * Created Time:  2012/2/24 9:54:49
+ * File Name: 250.CPP
+ */
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <cmath>
+#include <algorithm>
+#include <string>
+#include <vector>
+#include <stack>
+#include <queue>
+#include <set>
+#include <map>
+#include <time.h>
+#include <cctype>
+#include <functional>
+#include <deque>
+#include <iomanip>
+#include <bitset>
+#include <assert.h>
+#include <numeric>
+#include <sstream>
+#include <utility>
+
+#define pb push_back
+#define mp make_pair
+#define fi first
+#define se second
+#define all(a) (a).begin(),(a).end()
+#define FOR(i,a,b) for (int i=(a);i<(b);i++)
+#define FORD(i,a,b) for (int i=(a); i>=(b); i--)
+#define REP(i,b) FOR(i,0,b)
+using namespace std;
+const int maxint = -1u>>1;
+const double pi = 3.14159265358979323;
+const double eps = 1e-8;
+typedef pair<int,int> pii;
+typedef vector<int> vi;
+typedef vector<int>::iterator vit;
+
+bool check(vector<string> s)
+{
+    int n = s.size();
+    if ((s[n-1] == "." || s[n-1] == "..") && (s[n-2]=="." || s[n-2]=="..")) return true;
+    return false;
+}
+class EllysDirectoryListing
+{
+    public:
+    vector <string> getFiles(vector <string> files)
+    {
+        int n = files.size();
+        int p = n-1;
+        while (!check(files))
+        {
+            if (p < n-2) break;
+            REP(i, n)
+            {
+                if (files[i] == "." || files[i-1] == "..")
+                {
+                    swap(files[i], files[p]);
+                    p--;
+                    break;
+                }
+            }
+        }
+        return files;
+    }
+};
+
+
+int main() 
+{
+    return 0;
+}
+

@@ -1,0 +1,341 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>USACO Problems</title>
+<style type="text/css"><!--
+table,td,body {
+font-family: Helvetica, Verdana, Arial, SunSans-Regular, Sans-Serif;
+}
+--></style>
+</head>
+<body onload="endtime = initcount(13427); updateclock('Ends in', 'Person', endtime);" background='/usaco/bg9gold.jpg'>
+
+<font face='Verdana,Helvetica,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+<table><tr>
+<td><img src='/usaco/cowhead2.gif'>
+</td>
+<td valign='top'>
+<table cellpadding=0 cellspacing=0>
+    <tr><td>Contest: OPEN11 <b>GOLD</b> Division</td></tr>
+    <tr><td><div id='Person'></div></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    
+</table>
+</td></tr>
+</table>
+<font color=red><b>
+</b></font>
+
+
+</font><pre>﻿**********************************************************************
+                           金组题目
+**********************************************************************
+                        1..3共三个题目
+**********************************************************************
+Problem 1 修剪草坪 [Neal Wu, 2008]
+
+在一年前赢得了小镇的最佳草坪比赛后，FJ变得很懒，再也没有修剪过草坪。现在，
+新一轮的最佳草坪比赛又开始了，FJ希望能够再次夺冠。
+
+然而，FJ的草坪非常脏乱，因此，FJ只能够让他的奶牛来完成这项工作。FJ有N
+(1 <= N <= 100,000)只排成一排的奶牛，编号为1...N。每只奶牛的效率是不同的，
+奶牛i的效率为E_i(0 <= E_i <= 1,000,000,000)。
+
+靠近的奶牛们很熟悉，因此，如果FJ安排超过K只连续的奶牛，那么，这些奶牛就会罢工
+去开派对:)。因此，现在FJ需要你的帮助，计算FJ可以得到的最大效率，并且该方案中
+没有连续的超过K只奶牛。
+
+题目名称: mowlawn
+
+输入格式
+
+* 第一行：空格隔开的两个整数N和K
+
+* 第二到N+1行：第i+1行有一个整数E_i
+
+
+样例输入(mowlawn.in)：
+
+5 2
+1
+2
+3
+4
+5
+
+输入解释：
+
+FJ有5只奶牛，他们的效率为1，2，3，4，5。他们希望选取效率总和最大的奶牛，但是
+他不能选取超过2只连续的奶牛
+
+输出格式：
+
+* 第一行：一个值，表示FJ可以得到的最大的效率值。
+
+样例输出(mowlawn.out)：
+
+12
+
+FJ可以选择出了第三只以外的其他奶牛，总的效率为1+2+4+5=12。
+
+**********************************************************************
+Problem 2: 奇数度数 [传统题，2011]
+
+奶牛们遭到了进攻！在他们的共和国里，有N(1 <= N <=50,000)个城市，由M
+(1 <= M <= 100,000)条无向的道路连接城市A_i和B_i(1 <= A_i <= N;
+1 <= B_i <= N;A_i != B_i; 不会有重复的道路出现)。然而，整个共和国不一定是
+连通的——有一些城市无法到达另外一些城市。
+
+入侵者想得到共和国的地图。(入侵者很傻，因此，他们的绘制地图的方法是去访问
+每一条边，T_T)。奶牛想要折磨一下入侵者，使得他们尽可能难地完成地图绘制。因此，
+奶牛会破坏若干条道路。
+
+请你帮助奶牛找到一个道路的子集，使得每条边每个点的度数为奇数。或者输出不存在这
+样的一个子集。(奶牛的图论学得真好.= =||)
+
+举个例子，考虑下面的共和国：
+
+1---2
+ \ /
+  3---4
+
+如果我们保留道路1-3,2-3和3-4,破坏道路1-2,那么城市1,2,4都只有一条边相连，城市3有
+3条边相连：
+
+1   2
+ \ /
+  3---4
+
+文件名: oddd
+
+输入格式：
+
+* 第一行：两个用空格隔开的整数：N和M
+
+* 第二行到M+1行：第i+1行有两个空格隔开的整数A_i和
+
+样例输入(oddd.in)
+
+4 4
+1 2
+2 3
+3 1
+3 4
+
+输出格式：
+
+* 第一行： 一个整数表示需要保留的道路数量
+
+* 第二到K+1行：每行一个数表示保留的道路的编号，范围是1...M。
+
+样例输出：(oddd.out)
+
+3
+2
+3
+4
+************************************************************************
+Problem 3: 焊接 [Michael Cohen, 2011]
+
+奶牛们正在玩电线！他们学会了焊接：把两条电线连接起来，将某条的端点焊接到
+另一条的中间某个位置(注意：不能够将两条电线的端点焊接起来，即中间某个位置
+不包括端点)。当然，中间的同一个位置可以焊接多条电线。(并且焊接点必须为整数点，
+这个好像英文题面没说，我是这么理解的)
+
+奶牛们准备建造一个神奇的结构。它是一个N(1 <= N <= 50,000)个节点N-1条边的图，
+并且任意两个节点连通。每条边通过两个整数A,B来表示(1 <= A <=N; 1 <= B <= N; A != B)。
+
+奶牛们要从当地的店里买电线，然而，越长的电线就越贵，具体地：一条长度为L的电线
+的售价为L*L，并且，电线是不允许连接或者裁断的。
+
+给出奶牛准备建造的结构，请帮助奶牛们找出最小的花费。
+
+测试数据有50%的部分满足 N<=2000。
+
+并且，你的前50次提交可以得到部分测试数据的feedback。
+
+时间限制: 2 s
+空间限制: 64 MB
+
+PROBLEM NAME: solder
+
+INPUT FORMAT:
+
+* 第一行: 一个整数 N
+
+* 第二到N行: 每行两个整数A,B描述一条边
+
+SAMPLE INPUT (solder.in):
+6
+1 2
+1 3
+1 4
+1 5
+1 6
+
+
+OUTPUT FORMAT:
+
+* 第一行：一个整数表示最小的花费，注意这个整数可能超过32位二进制数。
+
+SAMPLE OUTPUT (solder.out):
+
+7
+
+OUTPUT DETAILS:
+
+由于每个节点都和1号节点相连，因此，我们只要购买1条长度为2的电线和3条长度为1的电线即可。
+总的花费为2 * 2 +1 * 1 + 1 * 1 + 1 * 1 = 7。
+
+**********************************************************************
+Translation by Zhongtian Jiang
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="POST">
+<input type="hidden" name="a" value="6hYnGT7zCYi">
+
+<table>
+<tr><td>
+
+<table bgcolor="#000000" cellpadding=0 cellspacing=0 border=0 width=100%>
+<tr><td height=1></td></tr>
+<tr><td width=1><td>
+
+  <font face='Verdana,Helvetica,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+  <table bgcolor="#bfffbf" cellpadding=5 width=100%>
+  <tr><td><b>Submit a program  for grading:&nbsp;<b><input type="file" NAME="filename">
+  &nbsp;&nbsp;
+  <input type="submit" VALUE="Submit" name='submit'></td></tr>
+  </table>
+
+</td><td width=1></td></tr>
+<tr height=1><td></td></tr>
+</table>
+
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" cellpadding=0 cellspacing=0 border=0 width=100%>
+<tr><td height=1></td></tr>
+<tr><td width=1><td>
+
+   <table bgcolor="#bfffbf" cellpadding=5 width=100%>
+   <tr><td colspan='2'>
+   <font face='Verdana,Helvetica,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+   <b>To run your program with your own test data, enter the program<br>
+   file name and input file name then click 'Test':</b></td></tr>
+
+  <tr><td>
+
+   <table>
+   <tr><td>
+     <table>
+     <tr><td>
+     <font face='Verdana,Helvetica,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+     <B>Program&nbsp;File:&nbsp;</B></td>
+         <td><input type="file" NAME="testprogramname"></td></tr>
+     <tr><td align="right">
+         <font face='Verdana,Helvetica,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+         <B>Input&nbsp;File:&nbsp;</B></td>
+         <td><input type="file" NAME="testfilename"></td></tr>
+     </table>
+   </td>
+   <td>&nbsp;&nbsp;</td>
+   <td><input type="submit" VALUE="Test" name='submit'></td>
+   </tr>
+   </table>
+
+   </td></tr></table>
+
+</td><td width=1></td></tr>
+<tr height=1><td></td></tr>
+</table>
+
+</tr></td>
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+  <table bgcolor="#000000" cellpadding=0 cellspacing=0 border=0 width=100%>
+    <tr><td height=1></td></tr>
+    <tr><td width=1></td><td>
+
+    <table bgcolor="#bfffbf" cellpadding=5 width=100%>
+      <tr><td>
+      <font face='Verdana,Helvetica,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+      <b>Backup a file:&nbsp;</b><input type="file" NAME="backupfilename">
+      &nbsp;&nbsp;&nbsp;<input type="submit" VALUE="Backup" NAME='submit'>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="submit" VALUE="See Backups" NAME='submit'>
+      </td></tr>
+    </table>
+
+    </td><td width=1></td></tr>
+    <tr><td height=1><td></tr>
+  </table>
+
+</td></tr>
+<tr><td><hr></td></tr>
+
+</table>
+<tr><td>Nothing is currently saved for grading.</td></tr><hr>
+<center>
+<a href="/ioiedit?a=6hYnGT7zCYi">Edit your database record</a>&nbsp;|&nbsp;
+
+<a href="/ioiupload?a=6hYnGT7zCYi&logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href=http://ace.delos.com/ioiupload?init=1&a=6hYnGT7zCYi>Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href=http://ace.delos.com/ioiupload?a=6hYnGT7zCYi&showsubmit>See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href=http://ace.delos.com/ioiupload?a=6hYnGT7zCYi&suggestionbox>Send message
+to operations staff</a>
+&nbsp;|&nbsp;
+Phone: +1 719-321-7333
+<br>
+Director is not online<br>
+This page was generated at 6:50:27 GMT.
+</center>
+</body>

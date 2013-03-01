@@ -1,0 +1,72 @@
+% $Id: problems.tex 109 2006-10-19 21:28:11Z cher $
+\documentclass[11pt,oneside]{article}
+
+\usepackage[russian,english]{babel}
+\usepackage{cherolymp}
+\usepackage{expdlist}
+\usepackage{comment}
+\usepackage{alltt}
+\usepackage{colordvi}
+\usepackage{ifthen}
+
+\makeatletter
+\def\fancyflag{1}
+%\newcommand{\fancyflag}{1}
+
+\begin{document}
+
+\renewcommand{\contestname}{ACM ICPC 2006--2007, NEERC, Moscow Subregional Contest}
+\renewcommand{\contestdate}{Moscow, October 21, 2006}
+
+\begin{center}
+\LARGE\bf ACM ICPC 2006--2007 NEERC Moscow Subregional Contest\\
+Moscow, October 21, 2006
+\end{center}
+
+\renewcommand{\tour}{}
+\begin{center}
+{\Large\textbf{List of Problems}}
+\end{center}
+
+\newcommand{\probtableline}[1]{%
+\probletter{#1}&\probpage{#1}&\probtime{#1}&\probmem{#1}&\probname{#1}}
+
+{\large
+\begin{center}
+\begin{tabular}{|c|c|p{2cm}|p{2cm}|p{6.5cm}|}
+\hline
+Problem & Page & Time limit & Memory limit & Name \\
+\hline
+\input{probinfo.tex}
+\hline
+\end{tabular}
+\end{center}}
+
+{\large
+Your solution must read the input data from the standard input and
+write the results to the standard output. Output to the standard
+error stream is prohibited.
+
+Unless explicitly stated in the problem statements, all the input
+elements may be separated by an arbitrary number of whitespace characters.
+All the input data are correct and satisfy specifications given in the
+problem statement.
+
+The output of your program must exactly satisfy the output specification
+in the problem statement.
+}
+
+\begin{center}
+\Large\bf General Sponsors
+\end{center}
+
+\begin{center}
+\includegraphics{rules/cboss.eps}
+\includegraphics{rules/yandex.eps}
+\end{center}
+
+\newpage
+
+\input{problist.tex}
+
+\end{document}

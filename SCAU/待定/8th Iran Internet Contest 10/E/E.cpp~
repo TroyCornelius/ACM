@@ -1,0 +1,89 @@
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int rows,cols;
+
+int g[400][400],m[400],mark[400];
+
+int improve(int u)
+{
+	if (mark[u]) return 0;
+	else mark[u]=1;
+	for (int v=0;v<cols;v++)
+		if (g[u][v] && (m[v]<0 || improve(m[v])))
+		{
+			m[v]=u;
+			return 1;
+		}
+	return 0;
+}
+
+int match()
+{
+	memset(m,-1,sizeof(m));
+	int res=0;
+	for (int i=0;i<rows;i++)
+	{
+		memset(mark,0,sizeof(mark));
+		if (improve(i)) res++;
+	}
+	return res;
+}
+
+vector<int> Juxtapose(vector<string> cubes,vector<string> words)
+{
+	vector<int> res;
+	for (int i=0;i<words.size();i++)
+	{
+		memset(g,0,sizeof(g));
+		rows=words[i].size();
+		cols=cubes.size();
+		for (int j=0;j<words[i].size();j++)
+			for (int k=0;k<cubes.size();k++)
+				if (cubes[k].find(words[i][j])!=string::npos)
+					g[j][k]=1;
+		if (match()==rows)
+			res.push_back(i);
+	}
+	/*cout << "RESULTS ";
+	for (int i=0;i<res.size();i++)
+		cout <<res[i]<< ' '; 
+	cout << endl;*/
+	cout << res.size() << endl;
+	return res;
+}
+int main()
+{
+	int tests;
+	cin >> tests;
+	vector<string> cubes,words;
+	for (int ii=1;ii<=tests;ii++)
+	{
+		for (int i=0;i<400;i++)
+			mark[i]=m[i]=0;
+		for (int i=0;i<400;i++)
+			for (int j=0;j<400;j++)
+				g[i][j]=0;
+		int n,m;
+		cubes.clear();
+		words.clear();
+		cin >> n >> m;
+	       for (int i=1;i<=n;i++)
+	       {
+		 string s;
+		 cin >> s;
+		cubes.push_back(s);
+	       }	       
+	       for (int i=1;i<=m;i++)
+		{
+			string s;
+			cin >> s;
+			words.push_back(s);
+		}
+	       Juxtapose(cubes,words);
+	}
+	return 0;
+}

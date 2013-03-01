@@ -1,0 +1,56 @@
+BODY {
+	BACKGROUND: white; MARGIN: 10px auto
+}
+TABLE {
+	MARGIN: 10px auto
+}
+H1 {
+	BORDER-TOP: red 2px solid; MARGIN: 10px auto; WIDTH: 12.5em; BORDER-BOTTOM: red 2px solid; TEXT-ALIGN: center
+}
+H2 {
+	MARGIN: 0px; TEXT-ALIGN: center
+}
+TD {
+	TEXT-ALIGN: left
+}
+.rank {
+	TEXT-ALIGN: left
+}
+.name {
+	TEXT-ALIGN: left
+}
+IMG.school {
+	HEIGHT: 28px
+}
+IMG.flag {
+	WIDTH: 30px
+}
+.links {
+	TEXT-ALIGN: left
+}
+.links A {
+	MARGIN: 0.5em; COLOR: blue; TEXT-DECORATION: none
+}
+.solved {
+	BACKGROUND: #90ee90; TEXT-ALIGN: center
+}
+.attempted {
+	BACKGROUND: #ffc0cb; TEXT-ALIGN: center
+}
+.footer {
+	BORDER-TOP: black 1px solid; FONT-SIZE: small; MARGIN: auto; WIDTH: 30em; COLOR: gray; TEXT-ALIGN: center
+}
+.footer A {
+	COLOR: gray; TEXT-DECORATION: none
+}
+.message {
+	DISPLAY: none; FONT-SIZE: small; BACKGROUND: red; MARGIN-BOTTOM: 1em; COLOR: white; TEXT-ALIGN: center
+}
+
+@media Print    
+{
+.links {
+	DISPLAY: none
+}
+
+}
